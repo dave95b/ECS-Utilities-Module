@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine.SceneManagement;
-using ECS.Utilities;
 
-namespace Gravity.ECS
+namespace ECS.Utilities
 {
     [UpdateInGroup(typeof(LateSimulationSystemGroup))]
     public class DestroySystem : ComponentSystem
