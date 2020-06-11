@@ -31,17 +31,17 @@ namespace ECS.Utilities
     public class EntitySpawnerQuery
     {
         private readonly ComponentSystemBase system;
+        private readonly EntityQuery spawnedQuery;
         private EntityManager EntityManager => system.EntityManager;
 
         private NativeArray<Entity> entities;
         private NativeList<JobHandle> handles;
-        private EntityQuery spawnedQuery;
 
         public EntitySpawnerQuery(ComponentSystemBase system)
         {
             this.system = system;
-            handles = new NativeList<JobHandle>(Allocator.Persistent);
             spawnedQuery = EntityManager.CreateEntityQuery(ComponentType.ReadOnly<JustSpawnedTag>());
+            handles = new NativeList<JobHandle>(Allocator.Persistent);
         }
 
         public EntitySpawnerQuery Spawn(in Entity prefab, int count, Allocator allocator)
